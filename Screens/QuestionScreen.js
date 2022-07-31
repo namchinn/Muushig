@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import {
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
     StyleSheet,
     Text,
-    useColorScheme,
     View,
-    Button,
     Dimensions,
     TextInput,
     ImageBackground,
     Image,
     TouchableOpacity,
 } from 'react-native';
+
 const widthD = Dimensions.get('window').width;
 const heightD = Dimensions.get('window').height;
+
 function App({ navigation }) {
 
     const [hedenGar, setHedenGar] = useState('5');
+    const [hedenTogrog, setHedenTogrog] = useState('500');
+    const [hedenBoolt, setHedenBoolt] = useState('1000');
 
-
+    const [toglogch1, setToglogch1] = useState('1');
+    const [toglogch2, setToglogch2] = useState('2');
+    const [toglogch3, setToglogch3] = useState('3');
+    const [toglogch4, setToglogch4] = useState('4');
+    const [toglogch5, setToglogch5] = useState('5');
 
     return (
         <ImageBackground source={require('../assets/pics/pexelCardd.jpg')} resizeMode='cover'>
@@ -35,12 +38,12 @@ function App({ navigation }) {
                     <TextInput
                         style={styles.textInput}
                         placeholder='Тооны хэдэн төгрөг вэ?'
-                        onChangeText={value => setHedenGar(value)}
+                        onChangeText={value => setHedenTogrog(value)}
                     />
                     <TextInput
                         style={styles.textInput}
                         placeholder='Боолт хэдээр тоглох вэ?'
-                        onChangeText={value => setHedenGar(value)}
+                        onChangeText={value => setHedenBoolt(value)}
                     />
                 </View>
 
@@ -56,30 +59,47 @@ function App({ navigation }) {
                         <Text style={styles.nersAwdagDugaar}>1.</Text>
                         <TextInput
                             style={styles.textInputThird}
-                            placeholder='Хэдэн гар суух вэ?'
-                            onChangeText={value => setHedenGar(value)}
+                            placeholder='Тоглогчийн нэр'
+                            onChangeText={value => setToglogch1(value)}
                         />
                     </View>
-                    <TextInput
-                        style={styles.textInputSecond}
-                        placeholder='Тооны хэдэн төгрөг вэ?'
-                        onChangeText={value => setHedenGar(value)}
-                    />
-                    <TextInput
-                        style={styles.textInputSecond}
-                        placeholder='Боолт хэдээр тоглох вэ?'
-                        onChangeText={value => setHedenGar(value)}
-                    />
-                    <TextInput
-                        style={styles.textInputSecond}
-                        placeholder='Боолт хэдээр тоглох вэ?'
-                        onChangeText={value => setHedenGar(value)}
-                    />
-                    <TextInput
-                        style={styles.textInputSecond}
-                        placeholder='Боолт хэдээр тоглох вэ?'
-                        onChangeText={value => setHedenGar(value)}
-                    />
+                    <View style={styles.nersAwdagView}>
+                        <Text style={styles.nersAwdagDugaar}>2.</Text>
+                        <TextInput
+                            style={styles.textInputThird}
+                            placeholder='Тоглогчийн нэр'
+                            onChangeText={value => setToglogch2(value)}
+                        />
+                    </View>
+                    <View style={styles.nersAwdagView}>
+                        <Text style={styles.nersAwdagDugaar}>3.</Text>
+                        <TextInput
+                            style={styles.textInputThird}
+                            placeholder='Тоглогчийн нэр'
+                            onChangeText={value => setToglogch3(value)}
+                        />
+                    </View>
+                    <View style={styles.nersAwdagView}>
+                        <Text style={styles.nersAwdagDugaar}>4.</Text>
+                        <TextInput
+                            style={styles.textInputThird}
+                            placeholder='Тоглогчийн нэр'
+                            onChangeText={value => setToglogch4(value)}
+                        />
+                    </View>
+                    <View style={styles.nersAwdagView}>
+                        <Text style={styles.nersAwdagDugaar}>5.</Text>
+                        <TextInput
+                            style={styles.textInputThird}
+                            placeholder='Тоглогчийн нэр'
+                            onChangeText={value => setToglogch5(value)}
+                        />
+                    </View>
+                    <View style={styles.toogoorDugaarlahView}>
+                        <TouchableOpacity onPress={() => navigation.navigate('MuushigScreen')}>
+                            <Text style={styles.textToogoorDugaarlah}>Тоогоор дугаарлах</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <View style={{ marginTop: 10 }}>
                     <TouchableOpacity onPress={() => navigation.navigate('MuushigScreen')}>
@@ -143,26 +163,39 @@ const styles = StyleSheet.create({
     textOnSar2: {
         fontSize: 20,
         textAlign: 'center',
-        marginTop: 8,
+        paddingVertical: 5,
         fontWeight: 'bold',
         borderBottomWidth: 2,
     },
     nersAwdagView: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        marginHorizontal: 0,
+        //borderBottomColor: '#59bdfd',
     },
     nersAwdagDugaar: {
-        fontSize: 15
+        fontSize: 15,
+        marginTop: 11,
+        marginLeft: 15,
     },
     textInputThird: {
         fontSize: 15,
-        // borderBottomWidth: 2,
-        // borderRadius: 15,
         textAlign: 'left',
-        //margin: 3,
         height: heightD / 18,
         fontWeight: 'bold',
-        borderWidth:1
     },
+    textToogoorDugaarlah: {
+        fontSize: 18,
+        textAlign: 'center',
+        fontWeight: 'bold'
+        //color: 'yellow'
+    },
+    toogoorDugaarlahView: {
+        backgroundColor: '#59bdfd',
+        marginVertical: 10,
+        marginHorizontal: 50,
+        borderRadius: 15,
+    }
 });
 
 export default App;
