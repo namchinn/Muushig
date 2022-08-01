@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
@@ -9,6 +9,8 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const widthD = Dimensions.get('window').width;
 const heightD = Dimensions.get('window').height;
@@ -25,11 +27,60 @@ function App({ navigation }) {
     const [toglogch4, setToglogch4] = useState('4');
     const [toglogch5, setToglogch5] = useState('5');
 
+    const [onoodor, setOnoodor] = useState('Өнөөдөр');
+
+    const onoodorAwah = () => {
+        var date = new Date().getDay();
+        var month = new Date().getMonth() + 1;
+        var year = new Date().getFullYear();
+
+        var ognoo = year + '/' + month + '/' + date;
+        setOnoodor(ognoo)
+    };
+
+    useEffect(() => {
+        onoodorAwah();
+    }, []);
+
+    const hadgalah = async () => {
+        try {
+            await AsyncStorage.setItem('hedenGar', JSON.stringify(hedenGar));
+            await AsyncStorage.setItem('hedenTogrog', JSON.stringify(hedenTogrog));
+            await AsyncStorage.setItem('hedenBoolt', JSON.stringify(hedenBoolt));
+
+            await AsyncStorage.setItem('toglogch1', JSON.stringify(toglogch1));
+            await AsyncStorage.setItem('toglogch2', JSON.stringify(toglogch2));
+            await AsyncStorage.setItem('toglogch3', JSON.stringify(toglogch3));
+            await AsyncStorage.setItem('toglogch4', JSON.stringify(toglogch4));
+            await AsyncStorage.setItem('toglogch5', JSON.stringify(toglogch5));
+
+            await AsyncStorage.setItem('onoodor', JSON.stringify(onoodor));
+        } catch (error) {
+            console.log(error);
+        }
+
+        navigation.navigate('MuushigScreen');
+    };
+
+    const toogoorDugaarlah = () => {
+        console.log(hedenGar);
+        console.log(hedenTogrog);
+        console.log(hedenBoolt);
+
+        console.log(toglogch1);
+        console.log(toglogch2);
+        console.log(toglogch3);
+        console.log(toglogch4);
+        console.log(toglogch5);
+
+        console.log(onoodor);
+    };
+
     return (
         <ImageBackground source={require('../assets/pics/pexelCardd.jpg')} resizeMode='cover'>
             <View style={styles.container}>
                 <View style={styles.firstSection}>
-                    <Text style={styles.textOnSar}>2022/7/27</Text>
+                    <Text style={styles.textOnSar}>{onoodor}</Text>
                     <TextInput
                         style={styles.textInput}
                         placeholder='Хэдэн гар суух вэ?'
@@ -96,13 +147,13 @@ function App({ navigation }) {
                         />
                     </View>
                     <View style={styles.toogoorDugaarlahView}>
-                        <TouchableOpacity onPress={() => navigation.navigate('MuushigScreen')}>
+                        <TouchableOpacity onPress={() => toogoorDugaarlah()}>
                             <Text style={styles.textToogoorDugaarlah}>Тоогоор дугаарлах</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
                 <View style={{ marginTop: 10 }}>
-                    <TouchableOpacity onPress={() => navigation.navigate('MuushigScreen')}>
+                    <TouchableOpacity onPress={() => hadgalah()}>
                         <Image source={require('../assets/pics/ehleh.png')} />
                     </TouchableOpacity>
                 </View>

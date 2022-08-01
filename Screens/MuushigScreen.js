@@ -1,21 +1,108 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
     StyleSheet,
     Text,
-    useColorScheme,
     View,
     Button,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-function App({navigation}) {
+function App({ navigation }) {
+
+    const [hedenGar, setHedenGar] = useState('5');
+    const [hedenTogrog, setHedenTogrog] = useState('500');
+    const [hedenBoolt, setHedenBoolt] = useState('1000');
+
+    const [toglogch1, setToglogch1] = useState('1');
+    const [toglogch2, setToglogch2] = useState('2');
+    const [toglogch3, setToglogch3] = useState('3');
+    const [toglogch4, setToglogch4] = useState('4');
+    const [toglogch5, setToglogch5] = useState('5');
+
+    const [onoodor, setOnoodor] = useState('Өнөөдөр');
+
+    const utgaAwah = async () => {
+        try {
+            var value1 = await AsyncStorage.getItem('hedenGar');
+            setHedenGar(JSON.parse(value1));
+        } catch (error) {
+            
+        }
+        try {
+            var value2 = await AsyncStorage.getItem('hedenTogrog');
+            setHedenTogrog(JSON.parse(value2));
+        } catch (error) {
+            
+        }
+        try {
+            // var value1 = await AsyncStorage.getItem('hedenGar');
+            // setHedenGar(JSON.parse(value1));
+            // var value2 = await AsyncStorage.getItem('hedenTogrog');
+            // setHedenTogrog(JSON.parse(value2));
+            // console.log(value2);
+            var value3 = await AsyncStorage.getItem('hedenBoolt');
+            setHedenBoolt(JSON.parse(value3));
+
+            var value4 = await AsyncStorage.getItem('toglogch1');
+            setToglogch1(JSON.parse(value4));
+            var value5 = await AsyncStorage.getItem('toglogch2');
+            setToglogch2(JSON.parse(value5));
+            var value6 = await AsyncStorage.getItem('toglogch3');
+            setToglogch3(JSON.parse(value3));
+            var value7 = await AsyncStorage.getItem('toglogch4');
+            setToglogch4(JSON.parse(value7));
+            var value8 = await AsyncStorage.getItem('toglogch5');
+            setToglogch5(JSON.parse(value8));
+
+            var value9 = await AsyncStorage.getItem('onoodor');
+            setOnoodor(JSON.parse(value9));
+        } catch (error) {
+            console.log(error)
+        }
+
+        console.log(hedenGar);
+        console.log(hedenTogrog);
+        console.log(hedenBoolt);
+
+        console.log(toglogch1);
+        console.log(toglogch2);
+        console.log(toglogch3);
+        console.log(toglogch4);
+        console.log(toglogch5);
+
+        console.log(onoodor);
+    };
+
+    useEffect(() => {
+        utgaAwah();
+        toogoorDugaarlah();
+    }, []);
+
+    const toogoorDugaarlah = () => {
+        console.log(hedenGar);
+        console.log(hedenTogrog);
+        console.log(hedenBoolt);
+
+        console.log(toglogch1);
+        console.log(toglogch2);
+        console.log(toglogch3);
+        console.log(toglogch4);
+        console.log(toglogch5);
+
+        console.log(onoodor);
+    };
 
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Muushig hotloh Screen !!!</Text>
+
+            <Text style={styles.text}>{hedenGar}</Text>
+            <Text style={styles.text}>{hedenTogrog}</Text>
+            <Text style={styles.text}>{hedenBoolt}</Text>
+            <Text style={styles.text}>{toglogch1}</Text>
+            <Text style={styles.text}>{toglogch2}</Text>
             <Button title='Go next' onPress={() => navigation.navigate('ResultScreen')} />
+            <Button title='test' onPress={() => toogoorDugaarlah()} />
         </View>
     );
 };
