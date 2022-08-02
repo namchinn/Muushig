@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
     View,
     Button,
+    FlatList,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 function App({ navigation }) {
 
@@ -25,21 +29,8 @@ function App({ navigation }) {
         try {
             var value1 = await AsyncStorage.getItem('hedenGar');
             setHedenGar(JSON.parse(value1));
-        } catch (error) {
-            
-        }
-        try {
             var value2 = await AsyncStorage.getItem('hedenTogrog');
             setHedenTogrog(JSON.parse(value2));
-        } catch (error) {
-            
-        }
-        try {
-            // var value1 = await AsyncStorage.getItem('hedenGar');
-            // setHedenGar(JSON.parse(value1));
-            // var value2 = await AsyncStorage.getItem('hedenTogrog');
-            // setHedenTogrog(JSON.parse(value2));
-            // console.log(value2);
             var value3 = await AsyncStorage.getItem('hedenBoolt');
             setHedenBoolt(JSON.parse(value3));
 
@@ -48,7 +39,7 @@ function App({ navigation }) {
             var value5 = await AsyncStorage.getItem('toglogch2');
             setToglogch2(JSON.parse(value5));
             var value6 = await AsyncStorage.getItem('toglogch3');
-            setToglogch3(JSON.parse(value3));
+            setToglogch3(JSON.parse(value6));
             var value7 = await AsyncStorage.getItem('toglogch4');
             setToglogch4(JSON.parse(value7));
             var value8 = await AsyncStorage.getItem('toglogch5');
@@ -59,24 +50,26 @@ function App({ navigation }) {
         } catch (error) {
             console.log(error)
         }
-
-        console.log(hedenGar);
-        console.log(hedenTogrog);
-        console.log(hedenBoolt);
-
-        console.log(toglogch1);
-        console.log(toglogch2);
-        console.log(toglogch3);
-        console.log(toglogch4);
-        console.log(toglogch5);
-
-        console.log(onoodor);
     };
 
     useEffect(() => {
         utgaAwah();
         toogoorDugaarlah();
     }, []);
+    const ners = [
+        { id: '1', ner: toglogch1 },
+        { id: '2', ner: toglogch2 },
+        { id: '3', ner: toglogch3 },
+        { id: '4', ner: toglogch4 },
+        { id: '5', ner: toglogch5 },
+    ];
+    
+    const Item = ({ title }) => (
+        <View style={styles.text}>
+            <Text style={styles.text}>{title}</Text>
+        </View>
+    );
+
 
     const toogoorDugaarlah = () => {
         console.log(hedenGar);
@@ -92,9 +85,20 @@ function App({ navigation }) {
         console.log(onoodor);
     };
 
+    const renderItem = ({ item }) => (
+        <Item title={item.ner} />
+    );
+
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Muushig hotloh Screen !!!</Text>
+
+            <FlatList
+                horizontal={true}
+                data={ners}
+                renderItem={renderItem}
+                keyExtractor={item => item?.id}
+            />
 
             <Text style={styles.text}>{hedenGar}</Text>
             <Text style={styles.text}>{hedenTogrog}</Text>
