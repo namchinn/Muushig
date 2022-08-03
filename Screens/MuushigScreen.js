@@ -6,10 +6,14 @@ import {
     View,
     Button,
     FlatList,
+    Dimensions,
+    ImageBackground,
+    Image,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
+const widthD = Dimensions.get('window').width;
+const heightd = Dimensions.get('window').height;
 
 function App({ navigation }) {
 
@@ -63,10 +67,10 @@ function App({ navigation }) {
         { id: '4', ner: toglogch4 },
         { id: '5', ner: toglogch5 },
     ];
-    
+
     const Item = ({ title }) => (
-        <View style={styles.text}>
-            <Text style={styles.text}>{title}</Text>
+        <View style={styles.ners}>
+            <Text style={styles.nersText}>{title}</Text>
         </View>
     );
 
@@ -91,22 +95,34 @@ function App({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Muushig hotloh Screen !!!</Text>
-
-            <FlatList
-                horizontal={true}
-                data={ners}
-                renderItem={renderItem}
-                keyExtractor={item => item?.id}
-            />
-
-            <Text style={styles.text}>{hedenGar}</Text>
-            <Text style={styles.text}>{hedenTogrog}</Text>
-            <Text style={styles.text}>{hedenBoolt}</Text>
-            <Text style={styles.text}>{toglogch1}</Text>
-            <Text style={styles.text}>{toglogch2}</Text>
-            <Button title='Go next' onPress={() => navigation.navigate('ResultScreen')} />
-            <Button title='test' onPress={() => toogoorDugaarlah()} />
+            <ImageBackground source={require('../assets/pics/pexelCardd.jpg')} resizeMode='cover' style={styles.container1}>
+                <Image style={{ marginTop: 35, width: widthD / 8 * 7, }} source={require('../assets/pics/blueLogo.png')} />
+                <FlatList
+                    horizontal={true}
+                    data={ners}
+                    renderItem={renderItem}
+                    keyExtractor={item => item?.id}
+                />
+            </ImageBackground>
+            <View style={styles.container2}>
+                {/* <FlatList
+                    horizontal
+                    data={ners}
+                    renderItem={renderItem}
+                    keyExtractor={item => item?.id}
+                /> */}
+                
+                <Text>lgasdgesag</Text>
+                <Button title='Go next' onPress={() => navigation.navigate('ResultScreen')} />
+                <Button title='test' onPress={() => toogoorDugaarlah()} />
+                <View style={{height: 2, width: widthD, backgroundColor: '#000'}}></View>
+                <Text style={styles.text}>{hedenGar}</Text>
+                <Text style={styles.text}>{hedenTogrog}</Text>
+                <Text style={styles.text}>{hedenBoolt}</Text>
+                <Text style={styles.text}>{toglogch1}</Text>
+                <Text style={styles.text}>{toglogch2}</Text>
+                
+            </View>
         </View>
     );
 };
@@ -116,18 +132,45 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    container1: {
+        height: heightd / 4,
+        width: widthD,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    container2: {
+        height: heightd / 4 * 3 + 45,
+        width: widthD,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: 'yellow',
+        marginTop: -45,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+    },
     text: {
+        color: '#000',
         fontSize: 24,
         fontWeight: '600',
     },
-    sectionDescription: {
-        marginTop: 8,
-        fontSize: 18,
-        fontWeight: '400',
+    ners: {
+        //backgroundColor: '#11234f',
+        backgroundColor: '#1e87db',
+        width: 60,
+        height: 40,
+        marginHorizontal: 11,
+        padding: 5,
+        borderTopLeftRadius: 5,
+        borderBottomRightRadius: 5,
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20,
     },
-    highlight: {
-        fontWeight: '700',
-    },
+    nersText: {
+        color: 'yellow',
+        fontSize: 15,
+        textAlign: 'center',
+    }
+
 });
 
 export default App;
