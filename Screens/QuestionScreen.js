@@ -8,6 +8,7 @@ import {
     ImageBackground,
     Image,
     TouchableOpacity,
+    Alert,
 } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -18,8 +19,8 @@ const heightD = Dimensions.get('window').height;
 function App({ navigation }) {
 
     const [hedenGar, setHedenGar] = useState('5');
-    const [hedenTogrog, setHedenTogrog] = useState('500');
-    const [hedenBoolt, setHedenBoolt] = useState('1000');
+    const [hedenTogrog, setHedenTogrog] = useState(0);
+    const [hedenBoolt, setHedenBoolt] = useState(0);
 
     const [toglogch1, setToglogch1] = useState('1');
     const [toglogch2, setToglogch2] = useState('2');
@@ -43,37 +44,67 @@ function App({ navigation }) {
     }, []);
 
     const hadgalah = async () => {
-        try {
-            await AsyncStorage.setItem('hedenGar', JSON.stringify(hedenGar));
-            await AsyncStorage.setItem('hedenTogrog', JSON.stringify(hedenTogrog));
-            await AsyncStorage.setItem('hedenBoolt', JSON.stringify(hedenBoolt));
+        if (hedenTogrog.length == 0 || hedenBoolt.length == 0) {
+            Alert.alert(
+                "Бал && Цаас",
+                "Бүх талбарыг бөглөнө үү!",
+                [
+                    { text: "За", onPress: () => console.log("OK Pressed") }
+                ]
+            );
+        } else {
+            try {
+                await AsyncStorage.setItem('hedenGar', JSON.stringify(hedenGar));
+                await AsyncStorage.setItem('hedenTogrog', JSON.stringify(hedenTogrog));
+                await AsyncStorage.setItem('hedenBoolt', JSON.stringify(hedenBoolt));
 
-            await AsyncStorage.setItem('toglogch1', JSON.stringify(toglogch1));
-            await AsyncStorage.setItem('toglogch2', JSON.stringify(toglogch2));
-            await AsyncStorage.setItem('toglogch3', JSON.stringify(toglogch3));
-            await AsyncStorage.setItem('toglogch4', JSON.stringify(toglogch4));
-            await AsyncStorage.setItem('toglogch5', JSON.stringify(toglogch5));
+                await AsyncStorage.setItem('toglogch1', JSON.stringify(toglogch1));
+                await AsyncStorage.setItem('toglogch2', JSON.stringify(toglogch2));
+                await AsyncStorage.setItem('toglogch3', JSON.stringify(toglogch3));
+                await AsyncStorage.setItem('toglogch4', JSON.stringify(toglogch4));
+                await AsyncStorage.setItem('toglogch5', JSON.stringify(toglogch5));
 
-            await AsyncStorage.setItem('onoodor', JSON.stringify(onoodor));
-        } catch (error) {
-            console.log(error);
+                await AsyncStorage.setItem('onoodor', JSON.stringify(onoodor));
+            } catch (error) {
+                console.log(error);
+            }
+            navigation.navigate('MuushigScreen');
         }
-
-        navigation.navigate('MuushigScreen');
     };
 
-    const toogoorDugaarlah = () => {
-        console.log(hedenGar);
-        console.log(hedenTogrog);
-        console.log(hedenBoolt);
+    const toogoorDugaarlah = async () => {
+        if (hedenTogrog == 0 || hedenBoolt == 0) {
+            Alert.alert(
+                "Бал && Цаас",
+                "Бүх талбарыг бөглөнө үү!",
+                [
+                    { text: "За", onPress: () => console.log("OK Pressed") }
+                ]
+            );
+        } else {
+            setToglogch1('1');
+            setToglogch2('2');
+            setToglogch3('3');
+            setToglogch4('4');
+            setToglogch5('5');
+            try {
+                await AsyncStorage.setItem('hedenGar', JSON.stringify(hedenGar));
+                await AsyncStorage.setItem('hedenTogrog', JSON.stringify(hedenTogrog));
+                await AsyncStorage.setItem('hedenBoolt', JSON.stringify(hedenBoolt));
 
-        console.log(toglogch1);
-        console.log(toglogch2);
-        console.log(toglogch3);
-        console.log(toglogch4);
-        console.log(toglogch5);
+                await AsyncStorage.setItem('toglogch1', JSON.stringify(toglogch1));
+                await AsyncStorage.setItem('toglogch2', JSON.stringify(toglogch2));
+                await AsyncStorage.setItem('toglogch3', JSON.stringify(toglogch3));
+                await AsyncStorage.setItem('toglogch4', JSON.stringify(toglogch4));
+                await AsyncStorage.setItem('toglogch5', JSON.stringify(toglogch5));
 
-        console.log(onoodor);
+                await AsyncStorage.setItem('onoodor', JSON.stringify(onoodor));
+            } catch (error) {
+                console.log(error);
+            }
+            navigation.navigate('MuushigScreen');
+        }
+
     };
 
     return (
@@ -81,11 +112,11 @@ function App({ navigation }) {
             <View style={styles.container}>
                 <View style={styles.firstSection}>
                     <Text style={styles.textOnSar}>{onoodor}</Text>
-                    <TextInput
+                    {/* <TextInput
                         style={styles.textInput}
                         placeholder='Хэдэн гар суух вэ?'
                         onChangeText={value => setHedenGar(value)}
-                    />
+                    /> */}
                     <TextInput
                         style={styles.textInput}
                         placeholder='Тооны хэдэн төгрөг вэ?'
@@ -188,11 +219,14 @@ const styles = StyleSheet.create({
         opacity: 0.95,
     },
     textInput: {
+        //fontFamily: 'Lobster-Regular',
         fontSize: 18,
         borderWidth: 2,
         borderRadius: 15,
         textAlign: 'center',
-        margin: 8,
+        marginBottom: 30,
+        marginTop: 5,
+        marginHorizontal: 8,
         height: heightD / 15,
         fontWeight: 'bold',
     },
@@ -206,10 +240,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     textOnSar: {
+        //fontFamily: 'Lobster-Regular',
         fontSize: 20,
         textAlign: 'center',
-        marginTop: 8,
+        marginTop: 20,
         fontWeight: 'bold',
+        marginBottom: 20,
     },
     textOnSar2: {
         fontSize: 20,

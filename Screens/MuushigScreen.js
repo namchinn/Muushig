@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         width: widthD,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: 'yellow',
+        backgroundColor: '#ffffff99',
         marginTop: -45,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
