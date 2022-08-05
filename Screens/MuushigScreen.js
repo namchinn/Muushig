@@ -111,8 +111,6 @@ function App({ navigation }) {
                     renderItem={renderItem}
                     keyExtractor={item => item?.id}
                 /> */}
-                
-                <Text>lgasdgesag</Text>
                 <Button title='Go next' onPress={() => navigation.navigate('ResultScreen')} />
                 <Button title='test' onPress={() => toogoorDugaarlah()} />
                 <View style={{height: 2, width: widthD, backgroundColor: '#000'}}></View>
@@ -149,7 +147,8 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 30,
     },
     text: {
-        color: '#000',
+        //color: '#000',
+        color: 'gray',
         fontSize: 24,
         fontWeight: '600',
     },
