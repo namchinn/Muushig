@@ -46,6 +46,12 @@ function App({ navigation }) {
         { id: '11', item: 15 },
     ])
 
+    const [onoo1, setOnoo1] = useState(0);
+    const [onoo2, setOnoo2] = useState(0);
+    const [onoo3, setOnoo3] = useState(0);
+    const [onoo4, setOnoo4] = useState(0);
+    const [onoo5, setOnoo5] = useState(0);
+
     const utgaAwah = async () => {
         try {
             var value1 = await AsyncStorage.getItem('hedenGar');
@@ -78,11 +84,11 @@ function App({ navigation }) {
         toogoorDugaarlah();
     }, []);
     const ners = [
-        { id: '1', ner: toglogch1 },
-        { id: '2', ner: toglogch2 },
-        { id: '3', ner: toglogch3 },
-        { id: '4', ner: toglogch4 },
-        { id: '5', ner: toglogch5 },
+        { id: '1', ner: toglogch1.substring(0, 3) },
+        { id: '2', ner: toglogch2.substring(0, 3) },
+        { id: '3', ner: toglogch3.substring(0, 3) },
+        { id: '4', ner: toglogch4.substring(0, 3) },
+        { id: '5', ner: toglogch5.substring(0, 3) },
     ];
 
     const Item = ({ title }) => (
@@ -169,25 +175,35 @@ function App({ navigation }) {
             <View style={styles.container3}>
                 <TouchableOpacity onPress={() => onooNemeh()}>
                     <View style={styles.bottomButtonView}>
-                        <Text style={styles.bottomButtonText}>0</Text>
+                        <Text style={styles.bottomButtonText}>{onoo1}</Text>
                     </View>
                 </TouchableOpacity>
-
-                <View style={styles.bottomButtonView}>
-                    <Text style={styles.bottomButtonText}>0</Text>
-                </View>
-                <View style={styles.bottomButtonView}>
-                    <Text style={styles.bottomButtonText}>0</Text>
-                </View>
-                <View style={styles.bottomButtonView}>
-                    <Text style={styles.bottomButtonText}>0</Text>
-                </View>
-                <View style={styles.bottomButtonView}>
-                    <Text style={styles.bottomButtonText}>0</Text>
-                </View>
-                <View style={styles.bottomButtonView}>
-                    <Text style={styles.bottomButtonText}>0</Text>
-                </View>
+                <TouchableOpacity onPress={() => onooNemeh()}>
+                    <View style={styles.bottomButtonView}>
+                        <Text style={styles.bottomButtonText}>{onoo2}</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => onooNemeh()}>
+                    <View style={styles.bottomButtonView}>
+                        <Text style={styles.bottomButtonText}>{onoo3}</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => onooNemeh()}>
+                    <View style={styles.bottomButtonView}>
+                        <Text style={styles.bottomButtonText}>{onoo4}</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => onooNemeh()}>
+                    <View style={styles.bottomButtonView}>
+                        <Text style={styles.bottomButtonText}>{onoo5}</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => onooNemeh()}>
+                    <Image style={{width: 45, height: 45}} source={require('../assets/pics/addd.png')}/>
+                    {/* <View style={styles.bottomButtonView}>
+                        <Text style={styles.bottomButtonText}>0</Text>
+                    </View> */}
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -279,7 +295,6 @@ const styles = StyleSheet.create({
     bottomButtonView: {
         width: widthD / 8 - 5,
         height: widthD / 8 - 5,
-
         borderWidth: 1,
         borderRadius: 10,
         margin: 10,
