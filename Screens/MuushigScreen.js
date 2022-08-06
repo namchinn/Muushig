@@ -9,6 +9,8 @@ import {
     Dimensions,
     ImageBackground,
     Image,
+    ScrollView,
+    TouchableOpacity,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -28,6 +30,21 @@ function App({ navigation }) {
     const [toglogch5, setToglogch5] = useState('5');
 
     const [onoodor, setOnoodor] = useState('Өнөөдөр');
+    const [idd, setIdd] = useState(11);
+
+    const [onoo, setOnoo] = useState([
+        { id: '1', item: 15 },
+        { id: '2', item: 15 },
+        { id: '3', item: 15 },
+        { id: '4', item: 15 },
+        { id: '5', item: 15 },
+        { id: '6', item: 15 },
+        { id: '7', item: 15 },
+        { id: '8', item: 15 },
+        { id: '9', item: 15 },
+        { id: '10', item: 15 },
+        { id: '11', item: 15 },
+    ])
 
     const utgaAwah = async () => {
         try {
@@ -74,6 +91,12 @@ function App({ navigation }) {
         </View>
     );
 
+    const OnooItem = ({ title }) => (
+        <View style={styles.onooView}>
+            <Text style={styles.onooText}>{title}</Text>
+        </View>
+    );
+
 
     const toogoorDugaarlah = () => {
         console.log(hedenGar);
@@ -92,34 +115,79 @@ function App({ navigation }) {
     const renderItem = ({ item }) => (
         <Item title={item.ner} />
     );
+    const renderOnoo = ({ item }) => (
+        <OnooItem title={item.id} />
+    );
+    const onooNemeh = () => {
+        var iddd = idd
+        iddd++;
+        setIdd(iddd);
+        setOnoo([...onoo, { id: iddd.toString(), item: toglogch1.toString() }]);
+    }
 
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../assets/pics/pexelCardd.jpg')} resizeMode='cover' style={styles.container1}>
                 <Image style={{ marginTop: 35, width: widthD / 8 * 7, }} source={require('../assets/pics/blueLogo.png')} />
+                {/* <FlatList
+                    horizontal={true}
+                    data={ners}
+                    renderItem={renderItem}
+                    keyExtractor={item => item?.id}
+                /> */}
+            </ImageBackground>
+            <View style={styles.container13}>
                 <FlatList
                     horizontal={true}
                     data={ners}
                     renderItem={renderItem}
                     keyExtractor={item => item?.id}
                 />
-            </ImageBackground>
+            </View>
             <View style={styles.container2}>
-                {/* <FlatList
-                    horizontal
-                    data={ners}
-                    renderItem={renderItem}
+                {/* <ScrollView horizontal style={{width: widthD, height: 20, backgroundColor: 'yellow'}}>
+                {
+                    ners.map((item) => {
+                        return (
+                            <View style={styles.onooText} key={item.id}>
+                                <Text>{item.ner}</Text>
+                            </View>
+                        )
+                    })
+                }
+                </ScrollView> */}
+                <FlatList
+                    scrollEnabled={true}
+                    numColumns={5}
+                    horizontal={false}
+                    data={onoo}
+                    renderItem={renderOnoo}
                     keyExtractor={item => item?.id}
-                /> */}
-                <Button title='Go next' onPress={() => navigation.navigate('ResultScreen')} />
-                <Button title='test' onPress={() => toogoorDugaarlah()} />
-                <View style={{height: 2, width: widthD, backgroundColor: '#000'}}></View>
-                <Text style={styles.text}>{hedenGar}</Text>
-                <Text style={styles.text}>{hedenTogrog}</Text>
-                <Text style={styles.text}>{hedenBoolt}</Text>
-                <Text style={styles.text}>{toglogch1}</Text>
-                <Text style={styles.text}>{toglogch2}</Text>
-                
+                />
+                <Button title='test' onPress={() => onooNemeh()} />
+            </View>
+            <View style={styles.container3}>
+                <TouchableOpacity onPress={() => onooNemeh()}>
+                    <View style={styles.bottomButtonView}>
+                        <Text style={styles.bottomButtonText}>0</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <View style={styles.bottomButtonView}>
+                    <Text style={styles.bottomButtonText}>0</Text>
+                </View>
+                <View style={styles.bottomButtonView}>
+                    <Text style={styles.bottomButtonText}>0</Text>
+                </View>
+                <View style={styles.bottomButtonView}>
+                    <Text style={styles.bottomButtonText}>0</Text>
+                </View>
+                <View style={styles.bottomButtonView}>
+                    <Text style={styles.bottomButtonText}>0</Text>
+                </View>
+                <View style={styles.bottomButtonView}>
+                    <Text style={styles.bottomButtonText}>0</Text>
+                </View>
             </View>
         </View>
     );
@@ -127,24 +195,44 @@ function App({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
     container1: {
-        height: heightd / 4,
-        width: widthD,
+        flex: 2,
         justifyContent: 'center',
         alignItems: 'center',
+        width: widthD,
     },
     container2: {
-        height: heightd / 4 * 3 + 45,
-        width: widthD,
+        flex: 6,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#ffffff99',
-        marginTop: -45,
+        backgroundColor: '#fff',
+        marginTop: 0,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
+        width: widthD,
+    },
+    container3: {
+        flex: 0.7,
+        width: widthD,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    container13: {
+        flex: 0.7,
+        width: widthD,
+        //backgroundColor: '#F2E205',
+        backgroundColor: 'yellow',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderBottomColor: 'red',
+        borderTopColor: 'red'
     },
     text: {
         //color: '#000',
@@ -157,8 +245,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#1e87db',
         width: 60,
         height: 40,
-        marginHorizontal: 11,
+        marginHorizontal: 10,
         padding: 5,
+        borderWidth: 0.4,
         borderTopLeftRadius: 5,
         borderBottomRightRadius: 5,
         borderTopRightRadius: 20,
@@ -168,8 +257,41 @@ const styles = StyleSheet.create({
         color: 'yellow',
         fontSize: 15,
         textAlign: 'center',
-    }
+    },
+    onooView: {
+        //backgroundColor: '#1e87db',
+        width: 60,
+        height: 40,
+        marginHorizontal: 11,
+        padding: 5,
+        borderRightWidth: 1,
+        //borderLeftWidth: 1,
+        // borderTopLeftRadius: 5,
+        // borderBottomRightRadius: 5,
+        // borderTopRightRadius: 20,
+        // borderBottomLeftRadius: 20,
+    },
+    onooText: {
+        color: '#000',
+        fontSize: 15,
+        textAlign: 'center',
+    },
+    bottomButtonView: {
+        width: widthD / 8 - 5,
+        height: widthD / 8 - 5,
 
+        borderWidth: 1,
+        borderRadius: 10,
+        margin: 10,
+        justifyContent: 'center'
+    },
+    bottomButtonText: {
+        fontSize: 20,
+        textAlign: 'center',
+        fontWeight: 'bold',
+
+        //padding: 5,
+    }
 });
 
 export default App;

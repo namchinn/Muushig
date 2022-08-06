@@ -44,7 +44,7 @@ function App({ navigation }) {
     }, []);
 
     const hadgalah = async () => {
-        if (hedenTogrog.length == 0 || hedenBoolt.length == 0) {
+        if (hedenTogrog == 0 || hedenBoolt == 0) {
             Alert.alert(
                 "Бал && Цаас",
                 "Бүх талбарыг бөглөнө үү!",
