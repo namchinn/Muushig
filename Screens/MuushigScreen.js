@@ -135,12 +135,6 @@ function App({ navigation }) {
         <View style={styles.container}>
             <ImageBackground source={require('../assets/pics/pexelCardd.jpg')} resizeMode='cover' style={styles.container1}>
                 <Image style={{ marginTop: 35, width: widthD / 8 * 7, }} source={require('../assets/pics/blueLogo.png')} />
-                {/* <FlatList
-                    horizontal={true}
-                    data={ners}
-                    renderItem={renderItem}
-                    keyExtractor={item => item?.id}
-                /> */}
             </ImageBackground>
             <View style={styles.container13}>
                 <FlatList
@@ -151,17 +145,6 @@ function App({ navigation }) {
                 />
             </View>
             <View style={styles.container2}>
-                {/* <ScrollView horizontal style={{width: widthD, height: 20, backgroundColor: 'yellow'}}>
-                {
-                    ners.map((item) => {
-                        return (
-                            <View style={styles.onooText} key={item.id}>
-                                <Text>{item.ner}</Text>
-                            </View>
-                        )
-                    })
-                }
-                </ScrollView> */}
                 <FlatList
                     scrollEnabled={true}
                     numColumns={5}
@@ -200,9 +183,6 @@ function App({ navigation }) {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => onooNemeh()}>
                     <Image style={{width: 45, height: 45}} source={require('../assets/pics/addd.png')}/>
-                    {/* <View style={styles.bottomButtonView}>
-                        <Text style={styles.bottomButtonText}>0</Text>
-                    </View> */}
                 </TouchableOpacity>
             </View>
         </View>
