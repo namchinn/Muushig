@@ -11,6 +11,7 @@ import {
     Image,
     ScrollView,
     TouchableOpacity,
+    Modal,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -51,6 +52,16 @@ function App({ navigation }) {
     const [onoo3, setOnoo3] = useState(0);
     const [onoo4, setOnoo4] = useState(0);
     const [onoo5, setOnoo5] = useState(0);
+
+    const [modal1, setModal1] = useState(false);
+    const onooHandler1 = () => {
+        setModal1(true);
+    }
+
+    const [modal2, setModal2] = useState(false);
+    const onooHandler2 = () => {
+        setModal2(true);
+    }
 
     const utgaAwah = async () => {
         try {
@@ -156,12 +167,125 @@ function App({ navigation }) {
                 <Button title='test' onPress={() => onooNemeh()} />
             </View>
             <View style={styles.container3}>
-                <TouchableOpacity onPress={() => onooNemeh()}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modal1}
+                    onRequestClose={() => {
+                        setModal1(false);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal1(false), setOnoo1(-1)}}
+                            >
+                                <Text style={styles.text}>1 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal1(false), setOnoo1(-2)}}
+                            >
+                                <Text style={styles.text}>2 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal1(false), setOnoo1(-3)}}
+                            >
+                                <Text style={styles.text}>3 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal1(false), setOnoo1(-4)}}
+                            >
+                                <Text style={styles.text}>4 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal1(false), setOnoo1(-5)}}
+                            >
+                                <Text style={styles.text}>5 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal1(false), setOnoo1(0)}}
+                            >
+                                <Text style={styles.text}>Өнжсөн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal1(false), setOnoo1(+5)}}
+                            >
+                                <Text style={styles.text}>Ниссэн</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
+
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modal2}
+                    onRequestClose={() => {
+                        setModal2(false);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal2(false), setOnoo2(-1)}}
+                            >
+                                <Text style={styles.text}>1 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal2(false), setOnoo2(-2)}}
+                            >
+                                <Text style={styles.text}>2 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal2(false), setOnoo2(-3)}}
+                            >
+                                <Text style={styles.text}>3 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal2(false), setOnoo2(-4)}}
+                            >
+                                <Text style={styles.text}>4 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal2(false), setOnoo2(-5)}}
+                            >
+                                <Text style={styles.text}>5 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal2(false), setOnoo2(0)}}
+                            >
+                                <Text style={styles.text}>Өнжсөн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => {setModal2(false), setOnoo2(+5)}}
+                            >
+                                <Text style={styles.text}>Ниссэн</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
+
+
+                <TouchableOpacity onPress={() => onooHandler1()}>
                     <View style={styles.bottomButtonView}>
                         <Text style={styles.bottomButtonText}>{onoo1}</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => onooNemeh()}>
+                <TouchableOpacity onPress={() => onooHandler2()}>
                     <View style={styles.bottomButtonView}>
                         <Text style={styles.bottomButtonText}>{onoo2}</Text>
                     </View>
@@ -182,7 +306,7 @@ function App({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => onooNemeh()}>
-                    <Image style={{width: 45, height: 45}} source={require('../assets/pics/addd.png')}/>
+                    <Image style={{ width: 45, height: 45 }} source={require('../assets/pics/addd.png')} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -284,8 +408,37 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         fontWeight: 'bold',
-
-        //padding: 5,
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    inModal: {
+        borderWidth: 1,
+        borderRadius: 25,
+        marginVertical: 8,
+        width: 200,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        padding: 8,
     }
 });
 
