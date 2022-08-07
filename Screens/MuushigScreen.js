@@ -164,7 +164,7 @@ function App({ navigation }) {
         var last11 = last1 + onoo5
         console.log(last55)
         var iddd = idd
-        
+
         console.log(onoo)
         setOnoo([...onoo,
         { id: (iddd++).toString(), item: last55 },
@@ -175,6 +175,16 @@ function App({ navigation }) {
         ]);
         setIdd(iddd);
         console.log(onoo)
+    }
+
+    const onooHasah = () => {
+        var onooo = onoo;
+        onooo = onooo.slice(0, onooo.length - 5,);
+        var iddd = idd;
+        var idddd = iddd - 5;
+        setOnoo(onooo);
+        setIdd(idddd);
+        alert(onoo.length)
     }
 
     return (
@@ -507,7 +517,7 @@ function App({ navigation }) {
                         <Text style={styles.bottomButtonText}>{onoo5}</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => onooNemeh()}>
+                <TouchableOpacity delayLongPress={1000} onLongPress={() => { onooHasah() }} activeOpacity={0.6} onPress={() => onooNemeh()}>
                     <Image style={{ width: 45, height: 45 }} source={require('../assets/pics/two2.png')} />
                 </TouchableOpacity>
             </View>
