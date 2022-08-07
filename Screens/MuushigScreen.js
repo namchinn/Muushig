@@ -31,14 +31,14 @@ function App({ navigation }) {
     const [toglogch5, setToglogch5] = useState('5');
 
     const [onoodor, setOnoodor] = useState('Өнөөдөр');
-    const [idd, setIdd] = useState(5);
+    const [idd, setIdd] = useState(6);
 
     const [onoo, setOnoo] = useState([
         { id: '1', item: 15 },
-        { id: '2', item: 14 },
-        { id: '3', item: 13 },
-        { id: '4', item: 12 },
-        { id: '5', item: 11 },
+        { id: '2', item: 15 },
+        { id: '3', item: 15 },
+        { id: '4', item: 15 },
+        { id: '5', item: 15 },
     ])
 
     const [onoo1, setOnoo1] = useState(0);
@@ -158,16 +158,23 @@ function App({ navigation }) {
         console.log(last1)
         console.log(onoo1)
         var last55 = last5 + onoo1
+        var last44 = last4 + onoo2
+        var last33 = last3 + onoo3
+        var last22 = last2 + onoo4
+        var last11 = last1 + onoo5
         console.log(last55)
         var iddd = idd
-        iddd++;
+        
+        console.log(onoo)
+        setOnoo([...onoo,
+        { id: (iddd++).toString(), item: last55 },
+        { id: (iddd++).toString(), item: last44 },
+        { id: (iddd++).toString(), item: last33 },
+        { id: (iddd++).toString(), item: last22 },
+        { id: (iddd++).toString(), item: last11 },
+        ]);
         setIdd(iddd);
         console.log(onoo)
-        setOnoo([...onoo, { id: iddd.toString(), item: last55 }]);
-        console.log(onoo)
-        setOnoo([...onoo, { id: iddd.toString(), item: last4 }]);
-        // setOnoo([...onoo, { id: iddd.toString(), item: last3 }]);
-        // setOnoo([...onoo, { id: iddd.toString(), item: last2 }]);
     }
 
     return (
@@ -192,7 +199,6 @@ function App({ navigation }) {
                     renderItem={renderOnoo}
                     keyExtractor={item => item?.id}
                 />
-                <Button title='test' onPress={() => onooNemeh()} />
             </View>
             <View style={styles.container3}>
 
