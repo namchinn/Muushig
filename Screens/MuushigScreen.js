@@ -4,14 +4,13 @@ import {
     StyleSheet,
     Text,
     View,
-    Button,
     FlatList,
     Dimensions,
     ImageBackground,
     Image,
-    ScrollView,
     TouchableOpacity,
     Modal,
+    Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -145,36 +144,51 @@ function App({ navigation }) {
         <OnooItem title={item.item} />
     );
     const onooNemeh = () => {
+        var niilber = onoo1 + onoo2 + onoo3 + onoo4 + onoo5;
+        if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15) {
+            var last5 = onoo[onoo.length - 5].item;
+            var last4 = onoo[onoo.length - 4].item;
+            var last3 = onoo[onoo.length - 3].item;
+            var last2 = onoo[onoo.length - 2].item;
+            var last1 = onoo[onoo.length - 1].item;
+            var last55 = last5 + onoo1
+            var last44 = last4 + onoo2
+            var last33 = last3 + onoo3
+            var last22 = last2 + onoo4
+            var last11 = last1 + onoo5
+            var iddd = idd
+            setOnoo([...onoo,
+            { id: (iddd++).toString(), item: last55 },
+            { id: (iddd++).toString(), item: last44 },
+            { id: (iddd++).toString(), item: last33 },
+            { id: (iddd++).toString(), item: last22 },
+            { id: (iddd++).toString(), item: last11 },
+            ]);
+            setIdd(iddd);
+            setOnoo1(0);
+            setOnoo2(0);
+            setOnoo3(0);
+            setOnoo4(0);
+            setOnoo5(0);
+        } else {
+            Alert.alert(
+                "Бал & Цаас",
+                "Үнэн зөв бөглөнө үү!",
+                [
+                    {
+                        text: "За", onPress: () => {
+                            setOnoo1(0);
+                            setOnoo2(0);
+                            setOnoo3(0);
+                            setOnoo4(0);
+                            setOnoo5(0);
+                        }
+                    }
+                ]
+            );
 
-        var last5 = onoo[onoo.length - 5].item;
-        var last4 = onoo[onoo.length - 4].item;
-        var last3 = onoo[onoo.length - 3].item;
-        var last2 = onoo[onoo.length - 2].item;
-        var last1 = onoo[onoo.length - 1].item;
-        console.log(last5)
-        console.log(last4)
-        console.log(last3)
-        console.log(last2)
-        console.log(last1)
-        console.log(onoo1)
-        var last55 = last5 + onoo1
-        var last44 = last4 + onoo2
-        var last33 = last3 + onoo3
-        var last22 = last2 + onoo4
-        var last11 = last1 + onoo5
-        console.log(last55)
-        var iddd = idd
+        };
 
-        console.log(onoo)
-        setOnoo([...onoo,
-        { id: (iddd++).toString(), item: last55 },
-        { id: (iddd++).toString(), item: last44 },
-        { id: (iddd++).toString(), item: last33 },
-        { id: (iddd++).toString(), item: last22 },
-        { id: (iddd++).toString(), item: last11 },
-        ]);
-        setIdd(iddd);
-        console.log(onoo)
     }
 
     const onooHasah = () => {
