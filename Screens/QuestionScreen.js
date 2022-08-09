@@ -112,11 +112,6 @@ function App({ navigation }) {
             <View style={styles.container}>
                 <View style={styles.firstSection}>
                     <Text style={styles.textOnSar}>{onoodor}</Text>
-                    {/* <TextInput
-                        style={styles.textInput}
-                        placeholder='Хэдэн гар суух вэ?'
-                        onChangeText={value => setHedenGar(value)}
-                    /> */}
                     <TextInput
                         style={styles.textInput}
                         placeholder='Тооны хэдэн төгрөг вэ?'
@@ -129,11 +124,9 @@ function App({ navigation }) {
                     />
                 </View>
 
-
                 <View>
                     <Image source={require('../assets/pics/blueLogo.png')} />
                 </View>
-
 
                 <View style={styles.secondSection}>
                     <Text style={styles.textOnSar2}>Тоглогчдын нэрс</Text>
@@ -196,7 +189,6 @@ function App({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        //backgroundColor: '#7141D9',
         height: heightD,
         width: widthD,
     },
@@ -219,7 +211,6 @@ const styles = StyleSheet.create({
         opacity: 0.95,
     },
     textInput: {
-        //fontFamily: 'Lobster-Regular',
         fontSize: 18,
         borderWidth: 2,
         borderRadius: 15,
@@ -240,7 +231,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     textOnSar: {
-        //fontFamily: 'Lobster-Regular',
         fontSize: 20,
         textAlign: 'center',
         marginTop: 20,
@@ -258,7 +248,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomWidth: 1,
         marginHorizontal: 0,
-        //borderBottomColor: '#59bdfd',
     },
     nersAwdagDugaar: {
         fontSize: 15,
@@ -275,7 +264,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         fontWeight: 'bold'
-        //color: 'yellow'
     },
     toogoorDugaarlahView: {
         backgroundColor: '#59bdfd',

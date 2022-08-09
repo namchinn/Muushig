@@ -100,7 +100,6 @@ function App({ navigation }) {
 
     useEffect(() => {
         utgaAwah();
-        //toogoorDugaarlah();
     }, []);
     const ners = [
         { id: '1', ner: toglogch1.substring(0, 3) },
@@ -121,21 +120,6 @@ function App({ navigation }) {
             <Text style={styles.onooText}>{title}</Text>
         </View>
     );
-
-
-    // const toogoorDugaarlah = () => {
-    //     console.log(hedenGar);
-    //     console.log(hedenTogrog);
-    //     console.log(hedenBoolt);
-
-    //     console.log(toglogch1);
-    //     console.log(toglogch2);
-    //     console.log(toglogch3);
-    //     console.log(toglogch4);
-    //     console.log(toglogch5);
-
-    //     console.log(onoodor);
-    // };
 
     const renderItem = ({ item }) => (
         <Item title={item.ner} />
@@ -589,7 +573,6 @@ const styles = StyleSheet.create({
     container13: {
         flex: 0.7,
         width: widthD,
-        //backgroundColor: '#F2E205',
         backgroundColor: 'yellow',
         flexDirection: 'row',
         alignItems: 'center',
@@ -599,13 +582,11 @@ const styles = StyleSheet.create({
         borderTopColor: 'red'
     },
     text: {
-        //color: '#000',
         color: 'gray',
         fontSize: 24,
         fontWeight: '600',
     },
     ners: {
-        //backgroundColor: '#11234f',
         backgroundColor: '#1e87db',
         width: 60,
         height: 40,
@@ -623,17 +604,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     onooView: {
-        //backgroundColor: '#1e87db',
         width: 60,
         height: 40,
         marginHorizontal: 11,
         padding: 5,
         borderRightWidth: 1,
-        //borderLeftWidth: 1,
-        // borderTopLeftRadius: 5,
-        // borderBottomRightRadius: 5,
-        // borderTopRightRadius: 20,
-        // borderBottomLeftRadius: 20,
     },
     onooText: {
         color: '#000',
