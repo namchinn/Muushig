@@ -170,6 +170,24 @@ function App({ navigation }) {
             setOnoo3(0);
             setOnoo4(0);
             setOnoo5(0);
+
+            if(last55 <= 0 || last44 <= 0 || last33 <= 0 || last22 <= 0 || last11 <= 0){
+                Alert.alert(
+                    "Бал & Цаас",
+                    "Баяр хүргэе!",
+                    [
+                        {
+                            text: "За", onPress: () => {
+                                setOnoo1(0);
+                                setOnoo2(0);
+                                setOnoo3(0);
+                                setOnoo4(0);
+                                setOnoo5(0);
+                            }
+                        }
+                    ]
+                );
+            }
         } else {
             Alert.alert(
                 "Бал & Цаас",
