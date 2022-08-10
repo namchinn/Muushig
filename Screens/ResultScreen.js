@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import {
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
     StyleSheet,
     Text,
-    useColorScheme,
     View,
     Button,
     Dimensions,
     TextInput,
+    Image,
+    ImageBackground
 } from 'react-native';
 const widthD = Dimensions.get('window').width;
 const heightD = Dimensions.get('window').height;
@@ -22,11 +20,9 @@ function App({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.firstSection}>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder='Хэдэн гар суух вэ?'
-                    onChangeText={value => setHedenGar(value)}
-                />
+            <ImageBackground source={require('../assets/pics/pexelCardd.jpg')} resizeMode='cover' style={styles.container1}>
+                <Image style={{ marginTop: 35, width: widthD / 8 * 7, }} source={require('../assets/pics/blueLogo.png')} />
+            </ImageBackground>
             </View>
             <View>
                 <Text style={styles.text}>Result Screen !!!</Text>
