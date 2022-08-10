@@ -13,10 +13,6 @@ const widthD = Dimensions.get('window').width;
 const heightD = Dimensions.get('window').height;
 function App({ navigation }) {
 
-    const [hedenGar, setHedenGar] = useState('5');
-
-
-
     return (
         <View style={styles.container}>
             <View style={styles.firstSection}>
