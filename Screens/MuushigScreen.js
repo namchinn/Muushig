@@ -127,6 +127,7 @@ function App({ navigation }) {
     const renderOnoo = ({ item }) => (
         <OnooItem title={item.item} />
     );
+    
     const onooNemeh = () => {
         var niilber = onoo1 + onoo2 + onoo3 + onoo4 + onoo5;
         if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15) {
