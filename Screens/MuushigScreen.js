@@ -11,6 +11,7 @@ import {
     TouchableOpacity,
     Modal,
     Alert,
+    BackHandler
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -101,6 +102,27 @@ function App({ navigation }) {
     useEffect(() => {
         utgaAwah();
     }, []);
+    useEffect(() => {
+        const backAction = () => {
+            Alert.alert("Hold on!", "Are you sure you want to go back?", [
+                {
+                    text: "Cancel",
+                    onPress: () => null,
+                    style: "cancel"
+                },
+                { text: "YES", onPress: () => BackHandler.exitApp() }
+            ]);
+            return true;
+        };
+
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        );
+
+        return () => backHandler.remove();
+    }, []);
+
     const ners = [
         { id: '1', ner: toglogch1.substring(0, 3) },
         { id: '2', ner: toglogch2.substring(0, 3) },
@@ -127,7 +149,7 @@ function App({ navigation }) {
     const renderOnoo = ({ item }) => (
         <OnooItem title={item.item} />
     );
-    
+
     const onooNemeh = () => {
         var niilber = onoo1 + onoo2 + onoo3 + onoo4 + onoo5;
         if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15) {
@@ -156,7 +178,7 @@ function App({ navigation }) {
             setOnoo4(0);
             setOnoo5(0);
 
-            if(last55 <= 0 || last44 <= 0 || last33 <= 0 || last22 <= 0 || last11 <= 0){
+            if (last55 <= 0 || last44 <= 0 || last33 <= 0 || last22 <= 0 || last11 <= 0) {
                 Alert.alert(
                     "Бал & Цаас",
                     "Баяр хүргэе!",
