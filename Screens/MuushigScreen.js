@@ -104,13 +104,13 @@ function App({ navigation }) {
     }, []);
     useEffect(() => {
         const backAction = () => {
-            Alert.alert("Hold on!", "Are you sure you want to go back?", [
+            Alert.alert("Бал & Цаас", "Та гарахдаа итгэлтэй байна уу?", [
                 {
-                    text: "Cancel",
+                    text: "Үгүй",
                     onPress: () => null,
                     style: "cancel"
                 },
-                { text: "YES", onPress: () => BackHandler.exitApp() }
+                { text: "Тийм", onPress: () => BackHandler.exitApp() }
             ]);
             return true;
         };
