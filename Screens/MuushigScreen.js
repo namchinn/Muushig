@@ -161,7 +161,7 @@ function App({ navigation }) {
             //     console.log(i);
             // }
         };
-        if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15 && a >= 2) {
+        if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15) {
             var last5 = onoo[onoo.length - 5].item;
             var last4 = onoo[onoo.length - 4].item;
             var last3 = onoo[onoo.length - 3].item;
