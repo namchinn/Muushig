@@ -152,7 +152,16 @@ function App({ navigation }) {
 
     const onooNemeh = () => {
         var niilber = onoo1 + onoo2 + onoo3 + onoo4 + onoo5;
-        if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15) {
+        var niit = [onoo1, onoo2, onoo3, onoo4, onoo5];
+        var a = 0;
+        for (var i = 0; i < niit.length; i++) {
+            console.log(niit[0]);
+            // if (niit[i] > 0 || niit[i] < 0) {
+            //     a++;
+            //     console.log(i);
+            // }
+        };
+        if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15 && a >= 2) {
             var last5 = onoo[onoo.length - 5].item;
             var last4 = onoo[onoo.length - 4].item;
             var last3 = onoo[onoo.length - 3].item;
@@ -201,13 +210,7 @@ function App({ navigation }) {
                 "Үнэн зөв бөглөнө үү!",
                 [
                     {
-                        text: "За", onPress: () => {
-                            setOnoo1(0);
-                            setOnoo2(0);
-                            setOnoo3(0);
-                            setOnoo4(0);
-                            setOnoo5(0);
-                        }
+                        text: "За"
                     }
                 ]
             );
@@ -223,7 +226,6 @@ function App({ navigation }) {
         var idddd = iddd - 5;
         setOnoo(onooo);
         setIdd(idddd);
-        alert(onoo.length)
     }
 
     return (
