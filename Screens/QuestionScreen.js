@@ -9,6 +9,7 @@ import {
     Image,
     TouchableOpacity,
     Alert,
+    Modal,
 } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -28,6 +29,20 @@ function App({ navigation }) {
     const [toglogch4, setToglogch4] = useState('4');
     const [toglogch5, setToglogch5] = useState('5');
 
+    const [urgelj, setUrgelj] = useState(false);
+
+    const fal = false;
+
+    const [onoo, setOnoo] = useState([
+        { id: '1', item: 15 },
+        { id: '2', item: 15 },
+        { id: '3', item: 15 },
+        { id: '4', item: 15 },
+        { id: '5', item: 15 },
+    ]);
+
+    const [idd, setIdd] = useState(6);
+
     const [onoodor, setOnoodor] = useState('Өнөөдөр');
 
     const onoodorAwah = () => {
@@ -39,8 +54,50 @@ function App({ navigation }) {
         setOnoodor(ognoo)
     };
 
+    const urgeljlehuu = async () => {
+        try {
+            value = await AsyncStorage.getItem('urgeljluuleh');
+            setUrgelj(JSON.parse(value));
+
+            if (JSON.parse(value) == true) {
+                Alert.alert(
+                    "Бал & Цаас",
+                    "Өмнөх тоглолтоо үргэлжлүүлэх үү?",
+                    [
+                        {
+                            text: "Үгүй",
+                            onPress: async () => await AsyncStorage.setItem('urgeljluuleh', JSON.stringify(fal)),
+                            style: "cancel"
+                        },
+                        { text: "Тийм", onPress: () => navigation.navigate('MuushigScreen') }
+                    ]
+                );
+            };
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const createTwoButtonAlert = () => {
+        Alert.alert(
+            "Бал & Цаас",
+            "Өмнөх тоглолтоо үргэлжлүүлэх үү?",
+            [
+                {
+                    text: "Үгүй",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                { text: "Тийм", onPress: () => navigation.navigate('MuushigScreen') }
+            ]
+        );
+    }
+
     useEffect(() => {
+        urgeljlehuu();
         onoodorAwah();
+        console.log(urgelj);
+
     }, []);
 
     const hadgalah = async () => {
@@ -65,6 +122,10 @@ function App({ navigation }) {
                 await AsyncStorage.setItem('toglogch5', JSON.stringify(toglogch5));
 
                 await AsyncStorage.setItem('onoodor', JSON.stringify(onoodor));
+
+                await AsyncStorage.setItem('id', JSON.stringify(idd));
+
+                await AsyncStorage.setItem('onoo', JSON.stringify(onoo));
             } catch (error) {
                 console.log(error);
             }

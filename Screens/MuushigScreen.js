@@ -30,6 +30,8 @@ function App({ navigation }) {
     const [toglogch4, setToglogch4] = useState('4');
     const [toglogch5, setToglogch5] = useState('5');
 
+    const [urgeljluuleh, setUrgeljluuleh] = useState(false);
+
     const [onoodor, setOnoodor] = useState('Өнөөдөр');
     const [idd, setIdd] = useState(6);
 
@@ -39,7 +41,7 @@ function App({ navigation }) {
         { id: '3', item: 15 },
         { id: '4', item: 15 },
         { id: '5', item: 15 },
-    ])
+    ]);
 
     const [onoo1, setOnoo1] = useState(0);
     const [onoo2, setOnoo2] = useState(0);
@@ -94,8 +96,15 @@ function App({ navigation }) {
 
             var value9 = await AsyncStorage.getItem('onoodor');
             setOnoodor(JSON.parse(value9));
+
+            var value10 = await AsyncStorage.getItem('onoo');
+            setOnoo(JSON.parse(value10));
+
+            var value11 = await AsyncStorage.getItem('id');
+            setIdd(JSON.parse(value11));
+
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     };
 
@@ -103,7 +112,7 @@ function App({ navigation }) {
         utgaAwah();
     }, []);
     useEffect(() => {
-        const backAction = async () => {
+        const backAction = () => {
             Alert.alert("Бал & Цаас", "Та гарахдаа итгэлтэй байна уу?", [
                 {
                     text: "Үгүй",
@@ -111,12 +120,13 @@ function App({ navigation }) {
                     style: "cancel"
                 },
                 {
-                    text: "Тийм", onPress: () => {
+                    text: "Тийм", onPress: async () => {
+                        setUrgeljluuleh(false);
                         try {
-                            await AsyncStorage.setItem('onoo', JSON.stringify(onoo));
+                            await AsyncStorage.setItem('urgeljluuleh', JSON.stringify(urgeljluuleh));
                             BackHandler.exitApp();
                         } catch (error) {
-                            console.log(error);
+                            
                         }
                     }
                 }
@@ -159,17 +169,17 @@ function App({ navigation }) {
         <OnooItem title={item.item} />
     );
 
-    const onooNemeh = () => {
+    const onooNemeh = async () => {
         var niilber = onoo1 + onoo2 + onoo3 + onoo4 + onoo5;
         var niit = [onoo1, onoo2, onoo3, onoo4, onoo5];
         var a = 0;
-        for (var i = 0; i < niit.length; i++) {
-            console.log(niit[0]);
+        // for (var i = 0; i < niit.length; i++) {
+            //console.log(niit[0]);
             // if (niit[i] > 0 || niit[i] < 0) {
             //     a++;
             //     console.log(i);
             // }
-        };
+        // };
         if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15) {
             var last5 = onoo[onoo.length - 5].item;
             var last4 = onoo[onoo.length - 4].item;
@@ -195,6 +205,18 @@ function App({ navigation }) {
             setOnoo3(0);
             setOnoo4(0);
             setOnoo5(0);
+
+            var tur = true;
+            var on = onoo;
+
+            try {
+                await AsyncStorage.setItem('onoo', JSON.stringify(onoo));
+                console.log(onoo);
+                await AsyncStorage.setItem('urgeljluuleh', JSON.stringify(tur));
+                await AsyncStorage.setItem('id', JSON.stringify(idd));
+            } catch (error) {
+                console.log(error);
+            }
 
             if (last55 <= 0 || last44 <= 0 || last33 <= 0 || last22 <= 0 || last11 <= 0) {
                 Alert.alert(
@@ -226,7 +248,7 @@ function App({ navigation }) {
 
         };
 
-    }
+    };
 
     const onooHasah = () => {
         var onooo = onoo;
