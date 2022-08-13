@@ -103,14 +103,23 @@ function App({ navigation }) {
         utgaAwah();
     }, []);
     useEffect(() => {
-        const backAction = () => {
+        const backAction = async () => {
             Alert.alert("Бал & Цаас", "Та гарахдаа итгэлтэй байна уу?", [
                 {
                     text: "Үгүй",
                     onPress: () => null,
                     style: "cancel"
                 },
-                { text: "Тийм", onPress: () => BackHandler.exitApp() }
+                {
+                    text: "Тийм", onPress: () => {
+                        try {
+                            await AsyncStorage.setItem('onoo', JSON.stringify(onoo));
+                            BackHandler.exitApp();
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }
+                }
             ]);
             return true;
         };
