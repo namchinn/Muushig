@@ -99,6 +99,7 @@ function App({ navigation }) {
 
             var value10 = await AsyncStorage.getItem('onoo');
             setOnoo(JSON.parse(value10));
+            console.log('onoo ', onoo);
 
             var value11 = await AsyncStorage.getItem('id');
             setIdd(JSON.parse(value11));
@@ -166,7 +167,7 @@ function App({ navigation }) {
         <Item title={item.ner} />
     );
     const renderOnoo = ({ item }) => (
-        <OnooItem title={item.item} />
+        <OnooItem title={item.id} />
     );
 
     const onooNemeh = async () => {
@@ -211,7 +212,7 @@ function App({ navigation }) {
 
             try {
                 await AsyncStorage.setItem('onoo', JSON.stringify(onoo));
-                console.log(onoo);
+                console.log('onoo door ',onoo);
                 await AsyncStorage.setItem('urgeljluuleh', JSON.stringify(tur));
                 await AsyncStorage.setItem('id', JSON.stringify(idd));
             } catch (error) {
