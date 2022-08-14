@@ -99,7 +99,6 @@ function App({ navigation }) {
 
             var value10 = await AsyncStorage.getItem('onoo');
             setOnoo(JSON.parse(value10));
-            console.log('onoo ', onoo);
 
             var value11 = await AsyncStorage.getItem('id');
             setIdd(JSON.parse(value11));
@@ -127,7 +126,7 @@ function App({ navigation }) {
                             await AsyncStorage.setItem('urgeljluuleh', JSON.stringify(urgeljluuleh));
                             BackHandler.exitApp();
                         } catch (error) {
-                            
+
                         }
                     }
                 }
@@ -167,89 +166,102 @@ function App({ navigation }) {
         <Item title={item.ner} />
     );
     const renderOnoo = ({ item }) => (
-        <OnooItem title={item.id} />
+        <OnooItem title={item.item} />
     );
 
     const onooNemeh = async () => {
         var niilber = onoo1 + onoo2 + onoo3 + onoo4 + onoo5;
         var niit = [onoo1, onoo2, onoo3, onoo4, onoo5];
+        console.log(niit)
         var a = 0;
-        // for (var i = 0; i < niit.length; i++) {
-            //console.log(niit[0]);
-            // if (niit[i] > 0 || niit[i] < 0) {
-            //     a++;
-            //     console.log(i);
-            // }
-        // };
-        if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15) {
-            var last5 = onoo[onoo.length - 5].item;
-            var last4 = onoo[onoo.length - 4].item;
-            var last3 = onoo[onoo.length - 3].item;
-            var last2 = onoo[onoo.length - 2].item;
-            var last1 = onoo[onoo.length - 1].item;
-            var last55 = last5 + onoo1
-            var last44 = last4 + onoo2
-            var last33 = last3 + onoo3
-            var last22 = last2 + onoo4
-            var last11 = last1 + onoo5
-            var iddd = idd
-            var onooCopy = onoo;
-            onooCopy.push(
-                { id: (iddd++).toString(), item: last55 },
-                { id: (iddd++).toString(), item: last44 },
-                { id: (iddd++).toString(), item: last33 },
-                { id: (iddd++).toString(), item: last22 },
-                { id: (iddd++).toString(), item: last11 },
-                );
-            // setOnoo([...onoo,
-            // { id: (iddd++).toString(), item: last55 },
-            // { id: (iddd++).toString(), item: last44 },
-            // { id: (iddd++).toString(), item: last33 },
-            // { id: (iddd++).toString(), item: last22 },
-            // { id: (iddd++).toString(), item: last11 },
-            // ]);
-            console.log(onooCopy)
-            setOnoo(onooCopy);
-            var iddddd = iddd;
-            setIdd(iddddd);
-            setOnoo1(0);
-            setOnoo2(0);
-            setOnoo3(0);
-            setOnoo4(0);
-            setOnoo5(0);
-
-            var tur = true;
-
-            try {
-                await AsyncStorage.setItem('onoo', JSON.stringify(onoo));
-                console.log('onoo door ',onoo);
-                await AsyncStorage.setItem('urgeljluuleh', JSON.stringify(tur));
-                await AsyncStorage.setItem('id', JSON.stringify(iddd));
-            } catch (error) {
-                console.log(error);
+        var i = 0;
+        while (i < 5) {
+            if (niit[i] != 0) {
+                a++;
+                console.log(a)
             }
+            i++;
+        }
+        // for (var i = 0; i < niit.length; i++) {
+        //console.log(niit[0]);
+        // if (niit[i] > 0 || niit[i] < 0) {
+        //     a++;
+        //     console.log(i);
+        // }
+        // };
+        if (a >= 2) {
+            if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15 || niilber == 10) {
+                var last5 = onoo[onoo.length - 5].item;
+                var last4 = onoo[onoo.length - 4].item;
+                var last3 = onoo[onoo.length - 3].item;
+                var last2 = onoo[onoo.length - 2].item;
+                var last1 = onoo[onoo.length - 1].item;
+                var last55 = last5 + onoo1
+                var last44 = last4 + onoo2
+                var last33 = last3 + onoo3
+                var last22 = last2 + onoo4
+                var last11 = last1 + onoo5
+                var iddd = idd
+                var onooCopy = onoo;
+                onooCopy.push(
+                    { id: (iddd++).toString(), item: last55 },
+                    { id: (iddd++).toString(), item: last44 },
+                    { id: (iddd++).toString(), item: last33 },
+                    { id: (iddd++).toString(), item: last22 },
+                    { id: (iddd++).toString(), item: last11 },
+                );
+                setOnoo(onooCopy);
+                var iddddd = iddd;
+                setIdd(iddddd);
+                setOnoo1(0);
+                setOnoo2(0);
+                setOnoo3(0);
+                setOnoo4(0);
+                setOnoo5(0);
 
-            if (last55 <= 0 || last44 <= 0 || last33 <= 0 || last22 <= 0 || last11 <= 0) {
+                var tur = true;
+
+                try {
+                    await AsyncStorage.setItem('onoo', JSON.stringify(onoo));
+                    await AsyncStorage.setItem('urgeljluuleh', JSON.stringify(tur));
+                    await AsyncStorage.setItem('id', JSON.stringify(iddd));
+                } catch (error) {
+                    console.log(error);
+                }
+
+                if (last55 <= 0 || last44 <= 0 || last33 <= 0 || last22 <= 0 || last11 <= 0) {
+                    Alert.alert(
+                        "Бал & Цаас",
+                        "Баяр хүргэе!",
+                        [
+                            {
+                                text: "За", onPress: () => {
+                                    setOnoo1(0);
+                                    setOnoo2(0);
+                                    setOnoo3(0);
+                                    setOnoo4(0);
+                                    setOnoo5(0);
+                                }
+                            }
+                        ]
+                    );
+                }
+            } else {
                 Alert.alert(
                     "Бал & Цаас",
-                    "Баяр хүргэе!",
+                    "Үнэн зөв бөглөнө үү!",
                     [
                         {
-                            text: "За", onPress: () => {
-                                setOnoo1(0);
-                                setOnoo2(0);
-                                setOnoo3(0);
-                                setOnoo4(0);
-                                setOnoo5(0);
-                            }
+                            text: "За"
                         }
                     ]
                 );
-            }
+
+            };
         } else {
             Alert.alert(
                 "Бал & Цаас",
-                "Үнэн зөв бөглөнө үү!",
+                "Гүйцэд бөглөнө үү!",
                 [
                     {
                         text: "За"
