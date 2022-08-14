@@ -193,14 +193,25 @@ function App({ navigation }) {
             var last22 = last2 + onoo4
             var last11 = last1 + onoo5
             var iddd = idd
-            setOnoo([...onoo,
-            { id: (iddd++).toString(), item: last55 },
-            { id: (iddd++).toString(), item: last44 },
-            { id: (iddd++).toString(), item: last33 },
-            { id: (iddd++).toString(), item: last22 },
-            { id: (iddd++).toString(), item: last11 },
-            ]);
-            setIdd(iddd);
+            var onooCopy = onoo;
+            onooCopy.push(
+                { id: (iddd++).toString(), item: last55 },
+                { id: (iddd++).toString(), item: last44 },
+                { id: (iddd++).toString(), item: last33 },
+                { id: (iddd++).toString(), item: last22 },
+                { id: (iddd++).toString(), item: last11 },
+                );
+            // setOnoo([...onoo,
+            // { id: (iddd++).toString(), item: last55 },
+            // { id: (iddd++).toString(), item: last44 },
+            // { id: (iddd++).toString(), item: last33 },
+            // { id: (iddd++).toString(), item: last22 },
+            // { id: (iddd++).toString(), item: last11 },
+            // ]);
+            console.log(onooCopy)
+            setOnoo(onooCopy);
+            var iddddd = iddd;
+            setIdd(iddddd);
             setOnoo1(0);
             setOnoo2(0);
             setOnoo3(0);
@@ -208,13 +219,12 @@ function App({ navigation }) {
             setOnoo5(0);
 
             var tur = true;
-            var on = onoo;
 
             try {
                 await AsyncStorage.setItem('onoo', JSON.stringify(onoo));
                 console.log('onoo door ',onoo);
                 await AsyncStorage.setItem('urgeljluuleh', JSON.stringify(tur));
-                await AsyncStorage.setItem('id', JSON.stringify(idd));
+                await AsyncStorage.setItem('id', JSON.stringify(iddd));
             } catch (error) {
                 console.log(error);
             }
