@@ -22,7 +22,7 @@ function App({ navigation }) {
             </View>
             <View>
                 <Text style={styles.text}>Result Screen !!!</Text>
-                <Button title='Go back' onPress={() => navigation.navigate('QuestionScreen')} />
+                <Button title='Go back' onPress={() => navigation.navigate('MuushigScreen')} />
             </View>
 
         </View>

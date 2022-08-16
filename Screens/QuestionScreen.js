@@ -96,7 +96,6 @@ function App({ navigation }) {
     useEffect(() => {
         urgeljlehuu();
         onoodorAwah();
-        console.log(urgelj);
 
     }, []);
 

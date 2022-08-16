@@ -236,6 +236,7 @@ function App({ navigation }) {
                                     setOnoo3(0);
                                     setOnoo4(0);
                                     setOnoo5(0);
+                                    navigation.navigate('ResultScreen');
                                 },
                             },
                             { text: "Дахиж эхлэх", onPress: () => console.log("OK Pressed") }
