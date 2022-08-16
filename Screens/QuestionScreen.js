@@ -175,11 +175,13 @@ function App({ navigation }) {
                     <Text style={styles.textOnSar}>{onoodor}</Text>
                     <TextInput
                         style={styles.textInput}
+                        keyboardType={'numeric'}
                         placeholder='Тооны хэдэн төгрөг вэ?'
                         onChangeText={value => setHedenTogrog(value)}
                     />
                     <TextInput
                         style={styles.textInput}
+                        keyboardType={'numeric'}
                         placeholder='Боолт хэдээр тоглох вэ?'
                         onChangeText={value => setHedenBoolt(value)}
                     />

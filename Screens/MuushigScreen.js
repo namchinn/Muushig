@@ -172,24 +172,19 @@ function App({ navigation }) {
     const onooNemeh = async () => {
         var niilber = onoo1 + onoo2 + onoo3 + onoo4 + onoo5;
         var niit = [onoo1, onoo2, onoo3, onoo4, onoo5];
-        console.log(niit)
         var a = 0;
+        var b = 0;
         var i = 0;
         while (i < 5) {
             if (niit[i] != 0) {
                 a++;
-                console.log(a)
+            }
+            if (niit[i] < 0) {
+                b++;
             }
             i++;
         }
-        // for (var i = 0; i < niit.length; i++) {
-        //console.log(niit[0]);
-        // if (niit[i] > 0 || niit[i] < 0) {
-        //     a++;
-        //     console.log(i);
-        // }
-        // };
-        if (a >= 2) {
+        if (a >= 2 && b > 0) {
             if (niilber == -5 || niilber == 0 || niilber == 5 || niilber == 15 || niilber == 10) {
                 var last5 = onoo[onoo.length - 5].item;
                 var last4 = onoo[onoo.length - 4].item;
@@ -232,17 +227,18 @@ function App({ navigation }) {
                 if (last55 <= 0 || last44 <= 0 || last33 <= 0 || last22 <= 0 || last11 <= 0) {
                     Alert.alert(
                         "Бал & Цаас",
-                        "Баяр хүргэе! {'\n'} Дахиж эхлэхүү?",
+                        "Баяр хүргэе! \nДахиж эхлэхүү?",
                         [
                             {
-                                text: "", onPress: () => {
+                                text: "Дуусгах", onPress: () => {
                                     setOnoo1(0);
                                     setOnoo2(0);
                                     setOnoo3(0);
                                     setOnoo4(0);
                                     setOnoo5(0);
-                                }
-                            }
+                                },
+                            },
+                            { text: "Дахиж эхлэх", onPress: () => console.log("OK Pressed") }
                         ]
                     );
                 }
