@@ -227,7 +227,7 @@ function App({ navigation }) {
                 if (last55 <= 0 || last44 <= 0 || last33 <= 0 || last22 <= 0 || last11 <= 0) {
                     Alert.alert(
                         "Бал & Цаас",
-                        "Баяр хүргэе! \nДахиж эхлэхүү?",
+                        "Баяр хүргэе!",
                         [
                             {
                                 text: "Дуусгах", onPress: () => {
