@@ -351,7 +351,7 @@ function App({ navigation }) {
                                 <Text style={styles.text}>Өнжсөн</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={styles.inModal}
+                                style={styles.inModalNissen}
                                 onPress={() => { setModal1(false), setOnoo1(+5) }}
                             >
                                 <Text style={styles.text}>Ниссэн</Text>
@@ -407,7 +407,7 @@ function App({ navigation }) {
                                 <Text style={styles.text}>Өнжсөн</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={styles.inModal}
+                                style={styles.inModalNissen}
                                 onPress={() => { setModal2(false), setOnoo2(+5) }}
                             >
                                 <Text style={styles.text}>Ниссэн</Text>
@@ -463,7 +463,7 @@ function App({ navigation }) {
                                 <Text style={styles.text}>Өнжсөн</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={styles.inModal}
+                                style={styles.inModalNissen}
                                 onPress={() => { setModal3(false), setOnoo3(+5) }}
                             >
                                 <Text style={styles.text}>Ниссэн</Text>
@@ -519,7 +519,7 @@ function App({ navigation }) {
                                 <Text style={styles.text}>Өнжсөн</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={styles.inModal}
+                                style={styles.inModalNissen}
                                 onPress={() => { setModal4(false), setOnoo4(+5) }}
                             >
                                 <Text style={styles.text}>Ниссэн</Text>
@@ -575,7 +575,7 @@ function App({ navigation }) {
                                 <Text style={styles.text}>Өнжсөн</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={styles.inModal}
+                                style={styles.inModalNissen}
                                 onPress={() => { setModal5(false), setOnoo5(+5) }}
                             >
                                 <Text style={styles.text}>Ниссэн</Text>
@@ -734,7 +734,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         padding: 8,
-    }
+    },
+    inModalNissen: {
+        borderWidth: 1,
+        borderColor: 'red',
+        borderRadius: 25,
+        marginVertical: 8,
+        width: 200,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        padding: 8,
+    },
 });
 
 export default App;
