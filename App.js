@@ -1,12 +1,8 @@
 import React from 'react';
 
-import {
-  StyleSheet,
-} from 'react-native';
-
-import QuestionScreen from './Screens/QuestionScreen';
-import MuushigScreen from './Screens/MuushigScreen';
 import ResultScreen from './Screens/ResultScreen';
+import MuushigScreen from './Screens/MuushigScreen';
+import QuestionScreen from './Screens/QuestionScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -37,8 +33,5 @@ function App() {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-});
 
 export default App;

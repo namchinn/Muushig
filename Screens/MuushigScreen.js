@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import {
-    StyleSheet,
     Text,
     View,
-    FlatList,
-    Dimensions,
-    ImageBackground,
     Image,
-    TouchableOpacity,
     Modal,
     Alert,
-    BackHandler
+    FlatList,
+    Dimensions,
+    StyleSheet,
+    BackHandler,
+    ImageBackground,
+    TouchableOpacity,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -21,8 +21,8 @@ const heightd = Dimensions.get('window').height;
 function App({ navigation }) {
 
     const [hedenGar, setHedenGar] = useState('5');
-    const [hedenTogrog, setHedenTogrog] = useState('500');
     const [hedenBoolt, setHedenBoolt] = useState('1000');
+    const [hedenTogrog, setHedenTogrog] = useState('500');
 
     const [toglogch1, setToglogch1] = useState('1');
     const [toglogch2, setToglogch2] = useState('2');
@@ -620,24 +620,24 @@ function App({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     container1: {
         flex: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
         width: widthD,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     container2: {
         flex: 6,
-        justifyContent: 'flex-start',
+        marginTop: 0,
+        width: widthD,
         alignItems: 'center',
         backgroundColor: '#fff',
-        marginTop: 0,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        width: widthD,
+        justifyContent: 'flex-start',
     },
     container3: {
         flex: 0.7,
@@ -649,102 +649,102 @@ const styles = StyleSheet.create({
     container13: {
         flex: 0.7,
         width: widthD,
-        backgroundColor: 'yellow',
+        borderWidth: 1,
         flexDirection: 'row',
         alignItems: 'center',
+        borderTopColor: 'red',
         justifyContent: 'center',
-        borderWidth: 1,
         borderBottomColor: 'red',
-        borderTopColor: 'red'
+        backgroundColor: 'yellow',
     },
     text: {
-        color: 'gray',
         fontSize: 24,
+        color: 'gray',
         fontWeight: '600',
     },
     ners: {
-        backgroundColor: '#1e87db',
         width: 60,
         height: 40,
-        marginHorizontal: 10,
         padding: 5,
         borderWidth: 0.4,
+        marginHorizontal: 10,
         borderTopLeftRadius: 5,
-        borderBottomRightRadius: 5,
         borderTopRightRadius: 20,
+        borderBottomRightRadius: 5,
         borderBottomLeftRadius: 20,
+        backgroundColor: '#1e87db',
     },
     nersText: {
-        color: 'yellow',
         fontSize: 15,
+        color: 'yellow',
         textAlign: 'center',
     },
     onooView: {
         width: 60,
         height: 40,
-        marginHorizontal: 11,
         padding: 5,
         borderRightWidth: 1,
+        marginHorizontal: 11,
     },
     onooText: {
-        color: '#000',
         fontSize: 15,
+        color: '#000',
         textAlign: 'center',
     },
     bottomButtonView: {
-        width: widthD / 8 - 5,
-        height: widthD / 8 - 5,
+        margin: 10,
         borderWidth: 1,
         borderRadius: 10,
-        margin: 10,
+        width: widthD / 8 - 5,
+        height: widthD / 8 - 5,
         justifyContent: 'center'
     },
     bottomButtonText: {
         fontSize: 20,
-        textAlign: 'center',
         fontWeight: 'bold',
+        textAlign: 'center',
     },
     centeredView: {
         flex: 1,
-        justifyContent: "center",
+        marginTop: 22,
         alignItems: "center",
-        marginTop: 22
+        justifyContent: "center",
     },
     modalView: {
         margin: 20,
-        backgroundColor: "white",
-        borderRadius: 20,
         padding: 35,
-        alignItems: "center",
+        elevation: 5,
+        shadowRadius: 4,
+        borderRadius: 20,
         shadowColor: "#000",
+        shadowOpacity: 0.25,
+        alignItems: "center",
+        backgroundColor: "white",
         shadowOffset: {
             width: 0,
-            height: 2
+            height: 2,
         },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5
     },
     inModal: {
+        padding: 8,
+        width: 200,
         borderWidth: 1,
         borderRadius: 25,
         marginVertical: 8,
-        width: 200,
-        justifyContent: 'center',
-        alignItems: 'center',
         textAlign: 'center',
-        padding: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     inModalNissen: {
+        padding: 8,
+        width: 200,
         borderWidth: 1,
-        borderColor: 'red',
         borderRadius: 25,
         marginVertical: 8,
-        width: 200,
-        justifyContent: 'center',
-        alignItems: 'center',
+        borderColor: 'red',
         textAlign: 'center',
-        padding: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 });
 

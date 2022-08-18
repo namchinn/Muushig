@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import {
-    StyleSheet,
     Text,
     View,
-    Dimensions,
-    TextInput,
-    ImageBackground,
     Image,
-    TouchableOpacity,
-    Alert,
     Modal,
+    Alert,
+    TextInput,
+    Dimensions,
+    StyleSheet,
+    ImageBackground,
+    TouchableOpacity,
 } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -20,8 +20,8 @@ const heightD = Dimensions.get('window').height;
 function App({ navigation }) {
 
     const [hedenGar, setHedenGar] = useState('5');
-    const [hedenTogrog, setHedenTogrog] = useState(0);
     const [hedenBoolt, setHedenBoolt] = useState(0);
+    const [hedenTogrog, setHedenTogrog] = useState(0);
 
     const [toglogch1, setToglogch1] = useState('1');
     const [toglogch2, setToglogch2] = useState('2');
@@ -250,66 +250,66 @@ function App({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        height: heightD,
         width: widthD,
+        height: heightD,
+        alignItems: 'center',
     },
     firstSection: {
         margin: 8,
-        borderRadius: 25,
-        borderWidth: 2,
-        backgroundColor: '#ffffff',
-        width: widthD - 100,
-        height: heightD / 3,
         marginTop: 25,
         opacity: 0.95,
+        borderWidth: 2,
+        borderRadius: 25,
+        height: heightD / 3,
+        width: widthD - 100,
+        backgroundColor: '#ffffff',
     },
     secondSection: {
-        borderRadius: 25,
+        opacity: 0.95,
         borderWidth: 2,
-        backgroundColor: '#ffffff',
+        borderRadius: 25,
         width: widthD - 100,
         height: heightD / 5 * 2,
-        opacity: 0.95,
+        backgroundColor: '#ffffff',
     },
     textInput: {
+        marginTop: 5,
         fontSize: 18,
         borderWidth: 2,
         borderRadius: 15,
-        textAlign: 'center',
         marginBottom: 30,
-        marginTop: 5,
+        fontWeight: 'bold',
+        textAlign: 'center',
         marginHorizontal: 8,
         height: heightD / 15,
-        fontWeight: 'bold',
     },
     textInputSecond: {
-        fontSize: 15,
-        borderBottomWidth: 2,
-        borderRadius: 15,
-        textAlign: 'center',
         margin: 3,
-        height: heightD / 18,
+        fontSize: 15,
+        borderRadius: 15,
         fontWeight: 'bold',
+        textAlign: 'center',
+        borderBottomWidth: 2,
+        height: heightD / 18,
     },
     textOnSar: {
         fontSize: 20,
-        textAlign: 'center',
         marginTop: 20,
-        fontWeight: 'bold',
         marginBottom: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
     textOnSar2: {
         fontSize: 20,
-        textAlign: 'center',
         paddingVertical: 5,
         fontWeight: 'bold',
+        textAlign: 'center',
         borderBottomWidth: 2,
     },
     nersAwdagView: {
+        marginHorizontal: 0,
         flexDirection: 'row',
         borderBottomWidth: 1,
-        marginHorizontal: 0,
     },
     nersAwdagDugaar: {
         fontSize: 15,
@@ -319,19 +319,19 @@ const styles = StyleSheet.create({
     textInputThird: {
         fontSize: 15,
         textAlign: 'left',
-        height: heightD / 18,
         fontWeight: 'bold',
+        height: heightD / 18,
     },
     textToogoorDugaarlah: {
         fontSize: 18,
+        fontWeight: 'bold',
         textAlign: 'center',
-        fontWeight: 'bold'
     },
     toogoorDugaarlahView: {
-        backgroundColor: '#59bdfd',
+        borderRadius: 15,
         marginVertical: 10,
         marginHorizontal: 50,
-        borderRadius: 15,
+        backgroundColor: '#59bdfd',
     }
 });
 
