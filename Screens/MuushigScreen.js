@@ -230,7 +230,13 @@ function App({ navigation }) {
                         "Баяр хүргэе!",
                         [
                             {
-                                text: "Дуусгах", onPress: () => {
+                                text: "Дуусгах", onPress: async () => {
+                                    var suuliinMor = [last55, last44, last33, last22, last11];
+                                    try {
+                                        await AsyncStorage.setItem('suuliinMor', JSON.stringify(suuliinMor));
+                                    } catch (error) {
+                                        console.log(error)
+                                    }
                                     setOnoo1(0);
                                     setOnoo2(0);
                                     setOnoo3(0);
