@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     },
     onooView: {
         width: 60,
-        height: 40,
         padding: 5,
+        height: 40,
         borderRightWidth: 1,
         marginHorizontal: 11,
     },
