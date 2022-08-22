@@ -419,7 +419,7 @@ function App({ navigation }) {
                                 <Text style={styles.text}>Ниссэн</Text>
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </View>    
                 </Modal>
 
                 <Modal

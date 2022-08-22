@@ -56,118 +56,63 @@ function App({ navigation }) {
                     keyExtractor={item => item?.id}
                 />
                 <Text style={styles.text}>Result Screen !!!</Text>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modal3}
+                    onRequestClose={() => {
+                        setModal3(false);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => { setModal3(false), setOnoo3(-1) }}
+                            >
+                                <Text style={styles.text}>1 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => { setModal3(false), setOnoo3(-2) }}
+                            >
+                                <Text style={styles.text}>2 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => { setModal3(false), setOnoo3(-3) }}
+                            >
+                                <Text style={styles.text}>3 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => { setModal3(false), setOnoo3(-4) }}
+                            >
+                                <Text style={styles.text}>4 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => { setModal3(false), setOnoo3(-5) }}
+                            >
+                                <Text style={styles.text}>5 идсэн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModal}
+                                onPress={() => { setModal3(false), setOnoo3(0) }}
+                            >
+                                <Text style={styles.text}>Өнжсөн</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.inModalNissen}
+                                onPress={() => { setModal3(false), setOnoo3(+5) }}
+                            >
+                                <Text style={styles.text}>Ниссэн</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
                 <Button title='Go back' onPress={() => navigation.navigate('MuushigScreen')} />
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modal1}
-                    onRequestClose={() => {
-                        setModal1(false);
-                    }}
-                >
-                    <View style={styles.centeredView}>
-                        <View style={styles.modalView}>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal1(false), setOnoo1(-1) }}
-                            >
-                                <Text style={styles.text}>1 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal1(false), setOnoo1(-2) }}
-                            >
-                                <Text style={styles.text}>2 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal1(false), setOnoo1(-3) }}
-                            >
-                                <Text style={styles.text}>3 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal1(false), setOnoo1(-4) }}
-                            >
-                                <Text style={styles.text}>4 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal1(false), setOnoo1(-5) }}
-                            >
-                                <Text style={styles.text}>5 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal1(false), setOnoo1(0) }}
-                            >
-                                <Text style={styles.text}>Өнжсөн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModalNissen}
-                                onPress={() => { setModal1(false), setOnoo1(+5) }}
-                            >
-                                <Text style={styles.text}>Ниссэн</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </Modal>
 
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modal2}
-                    onRequestClose={() => {
-                        setModal2(false);
-                    }}
-                >
-                    <View style={styles.centeredView}>
-                        <View style={styles.modalView}>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal2(false), setOnoo2(-1) }}
-                            >
-                                <Text style={styles.text}>1 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal2(false), setOnoo2(-2) }}
-                            >
-                                <Text style={styles.text}>2 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal2(false), setOnoo2(-3) }}
-                            >
-                                <Text style={styles.text}>3 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal2(false), setOnoo2(-4) }}
-                            >
-                                <Text style={styles.text}>4 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal2(false), setOnoo2(-5) }}
-                            >
-                                <Text style={styles.text}>5 идсэн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModal}
-                                onPress={() => { setModal2(false), setOnoo2(0) }}
-                            >
-                                <Text style={styles.text}>Өнжсөн</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={styles.inModalNissen}
-                                onPress={() => { setModal2(false), setOnoo2(+5) }}
-                            >
-                                <Text style={styles.text}>Ниссэн</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </Modal>
             </View>
 
         </View>
