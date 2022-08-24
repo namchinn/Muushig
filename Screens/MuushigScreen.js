@@ -615,6 +615,8 @@ function App({ navigation }) {
                         <Text style={styles.bottomButtonText}>{onoo5}</Text>
                     </View>
                 </TouchableOpacity>
+            </View>
+            <View>
                 <TouchableOpacity delayLongPress={1000} onLongPress={() => { onooHasah() }} activeOpacity={0.6} onPress={() => onooNemeh()}>
                     <Image style={{ width: 45, height: 45 }} source={require('../assets/pics/two2.png')} />
                 </TouchableOpacity>
