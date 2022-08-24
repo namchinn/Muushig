@@ -639,7 +639,6 @@ const styles = StyleSheet.create({
     },
     container2: {
         flex: 6,
-        marginTop: 0,
         width: widthD,
         alignItems: 'center',
         backgroundColor: '#fff',
@@ -653,6 +652,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    container4: {
+
     },
     container13: {
         flex: 0.7,
