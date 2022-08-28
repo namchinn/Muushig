@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     firstSection: {
         margin: 8,
         borderRadius: 15,
-        height: heightD / 3,
         width: widthD - 100,
+        height: heightD / 3,
         backgroundColor: '#ffffff99',
     },
     textInput: {
@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     },
     onooView: {
         width: 60,
-        padding: 5,
         height: 40,
+        padding: 5,
         borderRightWidth: 1,
         marginHorizontal: 11,
     },
